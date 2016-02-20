@@ -12,7 +12,9 @@
 # see the license for the specific language governing permissions and
 # limitations under the license.
 
-CC = clang
+#CC = clang
+CC = gcc
+
 CFLAGS = -m64 -O3 -Wall -std=c11
 
 all: test
