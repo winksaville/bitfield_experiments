@@ -72,7 +72,8 @@ int main(void) {
   volatile int vf = 32;
   struct one_bit_fields ob = { .b0 = 1, .b1 = 1, .b2 = 1 };
 
-  printf("ob.b0=%d (0x%x) type=%s\n", ob.b0, ob.b0, type_to_str(ob.b0));
+  printf("ob.b0=%d (0x%x)\n", ob.b0, ob.b0);
+  printf(" type=%s\n", type_to_str(ob.b0));
   printf("       >>1 =0x%016x\n", ob.b0 >> 1);
   printf("  (ull)>>1 =0x%016llx\n", (unsigned long long)ob.b0 >> 1);
   printf("       >>0 =0x%016x\n", ob.b0 >> 0);
@@ -93,8 +94,10 @@ int main(void) {
   printf("  (ull)<<32=0x%016llx\n", (unsigned long long)ob.b0 << 32);
   printf("     <<cf32=0x%016x\n", ob.b0 << cf);
   printf("     <<vf32=0x%016x\n", ob.b0 << vf);
+  printf("\n");
 
-  printf("ob.b1=%d (0x%x) type=%s\n", ob.b1, ob.b1, type_to_str(ob.b1));
+  printf("ob.b1=%d (0x%x)\n", ob.b1, ob.b1);
+  printf(" type=%s\n", type_to_str(ob.b1));
   printf("       >>1 =0x%016x\n", ob.b1 >> 1);
   printf("  (ull)>>1 =0x%016llx\n", (unsigned long long)ob.b1 >> 1);
   printf("       >>0 =0x%016x\n", ob.b1 >> 0);
@@ -115,8 +118,10 @@ int main(void) {
   printf("  (ull)<<32=0x%016llx\n", (unsigned long long)ob.b1 << 32);
   printf("     <<cf32=0x%016x\n", ob.b1 << cf);
   printf("     <<vf32=0x%016x\n", ob.b1 << vf);
+  printf("\n");
 
-  printf("ob.b2=%d (0x%x) type=%s\n", ob.b2, ob.b2, type_to_str(ob.b2));
+  printf("ob.b2=%d (0x%x)\n", ob.b2, ob.b2);
+  printf(" type=%s\n", type_to_str(ob.b2));
   printf("       >>1 =0x%016x\n", ob.b2 >> 1);
   printf("  (ull)>>1 =0x%016llx\n", (unsigned long long)ob.b2 >> 1);
   printf("       >>0 =0x%016x\n", ob.b2 >> 0);
@@ -137,6 +142,7 @@ int main(void) {
   printf("  (ull)<<32=0x%016llx\n", (unsigned long long)ob.b2 << 32);
   printf("     <<cf32=0x%016x\n", ob.b2 << cf);
   printf("     <<vf32=0x%016x\n", ob.b2 << vf);
+  printf("\n");
 
   struct unsigned_long_long_bit_fields ullb = {
     .b0 = 0x07FFFFFFF,
@@ -144,7 +150,8 @@ int main(void) {
     .b2 = 0x1FFFFFFFF,
   };
 
-  printf("ullb.b0=%u (0x%x) type=%s\n", ullb.b0, ullb.b0, type_to_str(ullb.b0));
+  printf("ullb.b0=%u (0x%x)\n", ullb.b0, ullb.b0);
+  printf("   type=%s\n", type_to_str(ullb.b0));
   printf("       >>1 =0x%016x\n", ullb.b0 >> 1);
   printf("  (ull)>>1 =0x%016llx\n", (unsigned long long)ullb.b0 >> 1);
   printf("       >>0 =0x%016x\n", ullb.b0 >> 0);
@@ -165,8 +172,10 @@ int main(void) {
   printf("  (ull)<<32=0x%016llx\n", (unsigned long long)ullb.b0 << 32);
   printf("     <<cf32=0x%016x\n", ullb.b0 << cf);
   printf("     <<vf32=0x%016x\n", ullb.b0 << vf);
+  printf("\n");
 
-  printf("ullb.b1=%u (0x%x) type=%s\n", ullb.b1, ullb.b1, type_to_str(ullb.b1));
+  printf("ullb.b1=%u (0x%x)\n", ullb.b1, ullb.b1);
+  printf("   type=%s\n", type_to_str(ullb.b1));
   printf("       >>1 =0x%016x\n", ullb.b1 >> 1);
   printf("  (ull)>>1 =0x%016llx\n", (unsigned long long)ullb.b1 >> 1);
   printf("       >>0 =0x%016x\n", ullb.b1 >> 0);
@@ -187,8 +196,10 @@ int main(void) {
   printf("  (ull)<<32=0x%016llx\n", (unsigned long long)ullb.b1 << 32);
   printf("     <<cf32=0x%016x\n", ullb.b1 << cf);
   printf("     <<vf32=0x%016x\n", ullb.b1 << vf);
+  printf("\n");
 
-  printf("ullb.b2=%llu (0x%llx) type=%s\n", ullb.b2, ullb.b2, type_to_str(ullb.b2));
+  printf("ullb.b2=%llu (0x%llx)\n", ullb.b2, ullb.b2);
+  printf("   type=%s\n", type_to_str(ullb.b2));
   printf("       >>1 =0x%016llx\n", ullb.b2 >> 1);
   printf("  (ull)>>1 =0x%016llx\n", (unsigned long long)ullb.b2 >> 1);
   printf("       >>0 =0x%016llx\n", ullb.b2 >> 0);
