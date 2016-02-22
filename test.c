@@ -52,6 +52,18 @@ struct packed_unsigned_long_long_bit_fields {
 _Static_assert(sizeof(struct packed_unsigned_long_long_bit_fields) == 12,
     L"packed_unsigned_long_long_bit_fields is not 12 bytes");
 
+struct mixed_bit_fields {
+  _Bool b0:1;
+  long unsigned int b1:30;
+  _Bool b2:1;
+  _Bool b3:1;
+  long unsigned int b4:30;
+  _Bool b5:1;
+} __attribute__((__packed__));
+
+_Static_assert(sizeof(struct mixed_bit_fields) == 8,
+    L"mixed_bit_fields is not 8 bytes");
+
 
 #define type_to_str(__x) _Generic((__x), \
   _Bool : "_Bool", \
@@ -68,8 +80,6 @@ _Static_assert(sizeof(struct packed_unsigned_long_long_bit_fields) == 12,
   default : "unknown type")
 
 int main(void) {
-  const int cf = 32;
-  volatile int vf = 32;
   struct one_bit_fields ob = { .b0 = 1, .b1 = 1, .b2 = 1 };
 
   printf("ob.b0=%d (0x%x)\n", ob.b0, ob.b0);
@@ -90,10 +100,8 @@ int main(void) {
   printf("  (ull)<<30=0x%016llx\n", (unsigned long long)ob.b0 << 30);
   printf("       <<31=0x%016x\n", ob.b0 << 31);
   printf("  (ull)<<31=0x%016llx\n", (unsigned long long)ob.b0 << 31);
-  printf("       <<32=0x%016x\n", ob.b0 << 32);
+  //printf("       <<32=0x%016x\n", ob.b0 << 32);
   printf("  (ull)<<32=0x%016llx\n", (unsigned long long)ob.b0 << 32);
-  printf("     <<cf32=0x%016x\n", ob.b0 << cf);
-  printf("     <<vf32=0x%016x\n", ob.b0 << vf);
   printf("\n");
 
   printf("ob.b1=%d (0x%x)\n", ob.b1, ob.b1);
@@ -114,10 +122,8 @@ int main(void) {
   printf("  (ull)<<30=0x%016llx\n", (unsigned long long)ob.b1 << 30);
   printf("       <<31=0x%016x\n", ob.b1 << 31);
   printf("  (ull)<<31=0x%016llx\n", (unsigned long long)ob.b1 << 31);
-  printf("       <<32=0x%016x\n", ob.b1 << 32);
+  //printf("       <<32=0x%016x\n", ob.b1 << 32);
   printf("  (ull)<<32=0x%016llx\n", (unsigned long long)ob.b1 << 32);
-  printf("     <<cf32=0x%016x\n", ob.b1 << cf);
-  printf("     <<vf32=0x%016x\n", ob.b1 << vf);
   printf("\n");
 
   printf("ob.b2=%d (0x%x)\n", ob.b2, ob.b2);
@@ -138,10 +144,8 @@ int main(void) {
   printf("  (ull)<<30=0x%016llx\n", (unsigned long long)ob.b2 << 30);
   printf("       <<31=0x%016x\n", ob.b2 << 31);
   printf("  (ull)<<31=0x%016llx\n", (unsigned long long)ob.b2 << 31);
-  printf("       <<32=0x%016x\n", ob.b2 << 32);
+  //printf("       <<32=0x%016x\n", ob.b2 << 32);
   printf("  (ull)<<32=0x%016llx\n", (unsigned long long)ob.b2 << 32);
-  printf("     <<cf32=0x%016x\n", ob.b2 << cf);
-  printf("     <<vf32=0x%016x\n", ob.b2 << vf);
   printf("\n");
 
   struct unsigned_long_long_bit_fields ullb = {
@@ -168,10 +172,8 @@ int main(void) {
   printf("  (ull)<<30=0x%016llx\n", (unsigned long long)ullb.b0 << 30);
   printf("       <<31=0x%016x\n", ullb.b0 << 31);
   printf("  (ull)<<31=0x%016llx\n", (unsigned long long)ullb.b0 << 31);
-  printf("       <<32=0x%016x\n", ullb.b0 << 32);
+  //printf("       <<32=0x%016x\n", ullb.b0 << 32);
   printf("  (ull)<<32=0x%016llx\n", (unsigned long long)ullb.b0 << 32);
-  printf("     <<cf32=0x%016x\n", ullb.b0 << cf);
-  printf("     <<vf32=0x%016x\n", ullb.b0 << vf);
   printf("\n");
 
   printf("ullb.b1=%u (0x%x)\n", ullb.b1, ullb.b1);
@@ -192,10 +194,8 @@ int main(void) {
   printf("  (ull)<<30=0x%016llx\n", (unsigned long long)ullb.b1 << 30);
   printf("       <<31=0x%016x\n", ullb.b1 << 31);
   printf("  (ull)<<31=0x%016llx\n", (unsigned long long)ullb.b1 << 31);
-  printf("       <<32=0x%016x\n", ullb.b1 << 32);
+  //printf("       <<32=0x%016x\n", ullb.b1 << 32);
   printf("  (ull)<<32=0x%016llx\n", (unsigned long long)ullb.b1 << 32);
-  printf("     <<cf32=0x%016x\n", ullb.b1 << cf);
-  printf("     <<vf32=0x%016x\n", ullb.b1 << vf);
   printf("\n");
 
   printf("ullb.b2=%llu (0x%llx)\n", ullb.b2, ullb.b2);
@@ -216,10 +216,12 @@ int main(void) {
   printf("  (ull)<<30=0x%016llx\n", (unsigned long long)ullb.b2 << 30);
   printf("       <<31=0x%016llx\n", ullb.b2 << 31);
   printf("  (ull)<<31=0x%016llx\n", (unsigned long long)ullb.b2 << 31);
-  printf("       <<32=0x%016llx\n", ullb.b2 << 32);
+  //printf("       <<32=0x%016llx\n", ullb.b2 << 32);
   printf("  (ull)<<32=0x%016llx\n", (unsigned long long)ullb.b2 << 32);
-  printf("     <<cf32=0x%016llx\n", ullb.b2 << cf);
-  printf("     <<vf32=0x%016llx\n", ullb.b2 << vf);
+
+  volatile struct mixed_bit_fields mbf = { .b0 = 0, .b2 = 1, .b3 = 0, .b5 = 1 };
+  int combined = (mbf.b5 << 3) | (mbf.b3 << 2) | (mbf.b2 << 1) | mbf.b0;
+  printf("combined=0x%x\n", combined);
 
   return 0;
 }
